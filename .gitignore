@@ -1,2 +1,9 @@
 test
 build
+
+# This repository should mainly have .proto files
+*.go
+*.java
+*.cpp
+*.cs
+*.py
