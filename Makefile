@@ -15,4 +15,8 @@ youtube-gateway:
 	protoc -I. -I$(GOPATH)/src -I$(GOPATH)/src/github.com/grpc-ecosystem/grpc-gateway/third_party/googleapis --grpc-gateway_out=logtostderr=true:. youtube/youtube.proto
 
 youtube-grpc:
-	protoc -I. -I$(GOPATH)\src -I$(GOPATH)\src\github.com\grpc-ecosystem\grpc-gateway\third_party\googleapis --go_out=plugins=grpc:. youtube\youtube.proto
+	#protoc -I. -I$(GOPATH)/src -I$(GOPATH)/src/github.com/grpc-ecosystem/grpc-gateway/third_party/googleapis --python_out=plugins=grpc:. youtube/youtube.proto
+	python -m grpc_tools.protoc -I. -I$(GOPATH)/src/github.com/grpc-ecosystem/grpc-gateway/third_party/googleapis --python_out=. --grpc_python_out=. youtube/youtube.proto
+
+clean:
+	rm youtube/youtube.pb.go youtube/youtube.pb.gw.go
