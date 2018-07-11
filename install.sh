@@ -1,7 +1,8 @@
 
 
 # This script will ask the user for a valid http github url to download proto file from. 
-# Specifically, it will download and build the respective gRPC equivalent to a directory.
+# Specifically, it will download gRPC equivalent to a directory. The handling of the poto file
+# is left up to the user.
 
 # Flow (example):
 #   $ curl https://raw.githubusercontent.com/hueyjj/fuse-proto/master/install.sh | sh -s youtube ~/github/projects/myproject/some/directory --language=go
