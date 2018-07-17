@@ -1,0 +1,40 @@
+syntax = "proto3";
+
+package nyaa;
+
+import "google/api/annotations.proto";
+
+service NyaaService  {
+    rpc SearchNyaa(NyaaSearchRequest) returns (NyaaSearchResponse) {
+        option (google.api.http) = {
+            post: "/nyaa/search"
+            body: "*"
+        }; 
+    }
+}
+
+message NyaaSearchRequest {
+    string term = 1;
+}
+
+message NyaaSearchItem {
+    string url = 1;
+    string item_title = 2;
+}
+
+message NyaaSearchResponse {
+    // Url is the full url used to query for results
+    string url = 1;
+    // Term returns the search terms given by the client
+    string term = 2;
+    // Status tell us if request fails or succeeds
+    enum Status {
+        UNKNOWN = 0;
+        MUSIC_EXIST = 1;
+        MUSIC_NOT_EXIST = 2;
+        DOWNLOAD_FAIL = 3;
+        DOWNLOAD_SUCCESS = 4;
+    }
+    Status status = 3;
+    repeated NyaaSearchItem items = 4;
+}
